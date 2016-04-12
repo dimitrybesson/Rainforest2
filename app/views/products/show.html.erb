@@ -1,2 +1,6 @@
-<h1>Products#show</h1>
-<p>Find me in app/views/products/show.html.erb</p>
+<h1><%= @product.name %> <%= @product.price_in_cents %></h1>
+<p><%= @product.description %></p>
+
+<%= link_to 'Home', root_path %>
+<%= link_to 'Edit', edit_product_path %>
+<%= link_to 'Delete', @product, method: :delete %>
