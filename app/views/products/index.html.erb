@@ -1,6 +1,14 @@
 <h1>Products</h1>
 
+<% if flash.any? %>
+    <% flash.each do |type, msg| %>
+      <p><%= msg %></p>
+    <% end %>
+<% end %>
+
 <%= link_to 'Add a Product', new_product_path %>
+
+
 
 <% @products.each do |product| %>
   <h2><%= link_to product.name, product_path(product) %> $<%= product.formatted_price %></h2>

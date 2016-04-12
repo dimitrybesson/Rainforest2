@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  # get 'users/new'
+  #
+  # get 'users/create'
+  #
+  # get 'users/show'
+
   # get 'products/index'
   #
   # get 'products/show'
@@ -8,6 +14,7 @@ Rails.application.routes.draw do
   # get 'products/edit'
   root 'products#index'
   resources :products
+  resource :users, only: %i(new create show) #will add destroy
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -2,7 +2,7 @@
 
   <% if @product.errors.any? %>
     <div id="error_explanation">
-<% binding.pry %>
+<!-- <% binding.pry %> -->
       <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product form being saved:</h2>
       <ul>
         <% @product.errors.full_messages.each do |msg| %>
