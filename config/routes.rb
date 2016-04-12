@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   resource :users, only: %i(new create show) #will add destroy
   resource :sessions, only: %i(new create destroy)
 
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
