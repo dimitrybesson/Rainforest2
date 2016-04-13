@@ -3,5 +3,5 @@ class User < ActiveRecord::Base
   has_many :products, through: :reviews
 
   has_secure_password
-  validates :email, :password, :password_confirmation, presence: true
+  validates :name, :email, :password, :password_confirmation, presence: true
 end
