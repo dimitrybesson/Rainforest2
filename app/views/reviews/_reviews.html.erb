@@ -1,0 +1,14 @@
+<h3>Reviews</h3>
+
+<% @product.reviews.each do |review| %>
+
+  <p>
+    <% if review.user != nil %>
+      <em> by <%= review.user.email %></em>
+      Added on: <%= review.created_at.to_formatted_s(:long_ordinal) %>
+    <% end %><br>
+    <blockquote>
+      <%= review.comment %>
+    </blockquote>
+  </p>
+<% end %>
