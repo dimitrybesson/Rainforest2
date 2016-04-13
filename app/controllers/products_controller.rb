@@ -6,7 +6,11 @@ class ProductsController < ApplicationController
   end
 
   def show
-    # @product = Product.find(params[:id])
+    @product = Product.find(params[:id])
+
+    if current_user
+      @review = @product.reviews.build
+    end
   end
 
   def new
@@ -45,6 +49,8 @@ class ProductsController < ApplicationController
       redirect_to root_url
     end
   end
+
+
 
   private
   def product_params

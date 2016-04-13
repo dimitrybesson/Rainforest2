@@ -5,3 +5,51 @@
 <%= link_to 'Home', root_path %>
 <%= link_to 'Edit', edit_product_path %>
 <%= link_to 'Delete', @product, method: :delete %>
+
+
+
+<% if current_user %>
+  <h4>Add Review</h4>
+
+  <%= form_for [@product, @review] do |f| %>
+
+    <% if @review.errors.any? %>
+      <div id='error_explanation'>
+        <h2><%= pluralize(@review.errors.count, 'error') %> prohibited this review from being saved:</h2>
+
+        <ul>
+          <% @review.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+
+   <div class='field'>
+     <%= f.label :comment %>
+     <%= f.text_area :comment %>
+   </div>
+   <div class='submit'>
+     <%= f.submit %>
+   </div>
+  <% end %>
+
+<% else %>
+  <p>Please <%= link_to 'Log in', new_session_path %> to add a review.</p>
+<% end %>
+
+<h3>Reviews</h3>
+
+<% @product.reviews.each do |review| %>
+
+  <p>
+    <% if review.user != nil %>
+      <em> by <%= review.user.email %></em>
+      Added on: <%= review.created_at.to_formatted_s(:long_ordinal) %>
+    <% end %><br>
+    <blockquote>
+      <%= review.comment %>
+    </blockquote>
+  </p>
+<% end %>
