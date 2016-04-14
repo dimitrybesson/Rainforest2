@@ -9,9 +9,9 @@
 <body>
   <div class='userinfo'>
     <% if current_user  %>
-      Welcome, <%= link_to current_user.email, 'users' %> <%= link_to 'Sign out', sessions_path, method: :delete %>
+      Welcome, <%= link_to current_user.email, user_path(current_user) %> <%= link_to 'Sign out', sessions_path, method: :delete %>
     <% else %>
-      <%= link_to 'Sign in', new_sessions_path %> | <%= link_to 'Sign up', new_users_path %>
+      <%= link_to 'Sign in', new_sessions_path %> | <%= link_to 'Sign up', new_user_path %>
     <% end %>
   </div>
 

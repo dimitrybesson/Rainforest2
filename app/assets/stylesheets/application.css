@@ -17,3 +17,7 @@
 .userinfo {
   text-align: right;
 }
+
+/** {
+  box-sizing: border-box;
+}*/

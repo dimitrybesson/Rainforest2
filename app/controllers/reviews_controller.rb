@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
-  before_action :load_product
-  before_action :ensure_logged_in, only: %i[create destroy]
+  before_action :load_product, only: [:create, :edit, :update, :destroy]
+  before_action :ensure_logged_in, only: %i(create destroy)
 
   def show
     @review = Review.find(params[:id])
@@ -16,9 +16,23 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def edit
+    @review = Review.find(params[:id])
+  end
+
+  def update
+    @review = Review.find(params[:id])
+    if @review.update_attributes(review_params)
+      redirect_to product_url(@product)
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
+    redirect_to product_path(@product), notice: 'Deleted review'
   end
 
   private

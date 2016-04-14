@@ -1,12 +1,22 @@
 <h1>Profile</h1>
-<h2><%= current_user.name %></h2>
-<p><%= current_user.email %></p>
+
+<%= link_to 'Home', root_path %>
+
+<h2><%= @user.name %></h2>
+<p><%= @user.email %></p>
 
 <h3>Reviews by User: (<%= @user.reviews.count %>)</h3>
 
-<% @user.reviews.each do |review| %>
+<% @user.reviews.newest_first.each do |review| %>
+
+    <p><strong><%= review.product.name %></strong> on <%= review.created_at.to_formatted_s(:long_ordinal) %></p>
   <blockquote>
-    <p><%= review.product.name %> on <%= review.created_at.to_formatted_s(:long_ordinal) %></p>
     <p><%= review.comment %></p>
+
+
+    <% if @user == current_user %>
+      <%= link_to 'Edit', edit_product_review_path(review.product, review) %>
+    <% end %>
   </blockquote>
+
 <% end %>

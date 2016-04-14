@@ -2,11 +2,15 @@ class ProductsController < ApplicationController
   before_action :find_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.all
+    if params[:search_value]
+      @products = Product.where("name like ? or description like ?", "%#{params[:search_value]}%", "%#{params[:search_value]}%")
+    else
+      @products = Product.all
+    end
   end
 
   def show
-    @product = Product.find(params[:id])
+    #@product = Product.find(params[:id])
 
     if current_user
       @review = @product.reviews.build
