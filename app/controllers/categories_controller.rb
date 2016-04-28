@@ -2,12 +2,16 @@ class CategoriesController < ApplicationController
   def show
   end
 
+  def new
+
+  end
+
   def create
     @category = @product.categories.build(category_params)
     if @category.save
-      redirect_to root_url
+      render '/prodcuts/new'
     else
-      render :product_url(@product)
+      render "products/#{@product.id}"
     end
   end
 

@@ -19,6 +19,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @category = @product.categories.build
   end
 
   def create #add flash

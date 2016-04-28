@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  get 'categories/show'
-
-  get 'categories/create'
-
-  get 'categories/destroy'
+  # get 'categories/show'
+  #
+  # get 'categories/create'
+  #
+  # get 'categories/destroy'
 
   # get 'reviews/show'
   #
@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   end
   resources :users, only: %i(new create show) #will add destroy
   resource :sessions, only: %i(new create destroy)
+  resources :categories, only: %i(index create destroy show)
 
 
 

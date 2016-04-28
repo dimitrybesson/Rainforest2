@@ -1,3 +1,25 @@
+<div>
+  <% Category.all.each do |category| %>
+    <%= fields_for :categories, category do |c| %>
+      <%= c.label category.name %>
+      <%= c.check_box :name %>
+    <% end %>
+
+  <% end %>
+  <div>
+    <%= form_for @category do |h| %>
+      <div>
+        <%= h.label "Other" %>
+        <%= h.text_field :name %>
+        <%= submit_tag "Add Categories" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+
+
 <%= form_for @product do |f| %>
 
   <% if @product.errors.any? %>
@@ -25,7 +47,9 @@
     <%= f.label :price_in_cents %><br>
     <%= f.text_field :price_in_cents %>
   </div><br>
+
+
   <div class="field">
-    <%= f.submit %>
+    <%= f.submit  %>
   </div><br>
 <% end %>
