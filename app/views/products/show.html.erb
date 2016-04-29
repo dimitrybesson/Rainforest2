@@ -20,3 +20,29 @@
 <div id='reviews-list'>
   <%= render @reviews %>
 </div>
+
+<!-- <script type="text/javascript">
+  $(document).ready(function() {
+    $('#new_review')
+      .on('ajax:beforeSend', function() {alert("loading!");})
+      .on('ajax:success', function(data, status, xhr) {alert("success!");})
+      .on('ajax:complete', function() {alert("complete!");});
+  });
+</script> -->
+
+<script type="text/javascript">
+  $(function() {
+    $('#new_review')
+      .on('ajax:beforeSend', function() {
+        $("input[type='submit']")
+          .val('Saving...')
+          .attr('disabled', 'disabled');
+      })
+
+    .on('ajax:complete', function() {
+      $("input[type='submit']")
+        .val('Create Review')
+        .removeAttr('disabled');
+    });
+  });
+</script>

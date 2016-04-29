@@ -1,0 +1,8 @@
+
+<% if @review.errors.any? %>
+  $('#review-form-errors').html("<%= j(render('/products/review_form_errors')) %>")
+<% else %>
+  $('#review-form-errors').html('');
+  $('#reviews-list').append("<%= j (render(@review)) %>")
+  $('#new_review')[0].reset();
+<% end %>

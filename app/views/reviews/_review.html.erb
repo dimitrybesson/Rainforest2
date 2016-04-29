@@ -1,14 +1,16 @@
 
   <div class='review'>
-    <% if review.user != nil %>
-      <em> by <%= link_to review.user.email, user_path(review.user) %></em>
-      Added on: <%= review.created_at.to_formatted_s(:long_ordinal) %>
-    <% end %><br>
-    <blockquote>
-      <%= review.comment %>
+    <% if review.persisted? %>
+      <% if review.user != nil %>
+        <em> by <%= link_to review.user.email, user_path(review.user) %></em>
+        Added on: <%= review.created_at.to_formatted_s(:long_ordinal) %>
+      <% end %><br>
+      <blockquote>
+        <%= review.comment %>
 
-      <% if review.user == current_user %>
-        <%= link_to 'Edit', edit_product_review_path(@product, review) %> | <%= link_to 'Delete', product_review_path(@product, review), method: :delete %>
-      <% end %>
-    </blockquote>
+        <% if review.user == current_user %>
+          <%= link_to 'Edit', edit_product_review_path(@product, review) %> | <%= link_to 'Delete', product_review_path(@product, review), method: :delete %>
+        <% end %>
+      </blockquote>
+    <% end %>
   </div>

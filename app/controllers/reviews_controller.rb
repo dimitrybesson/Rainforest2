@@ -7,12 +7,18 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    @reviews = @product.reviews
     @review = @product.reviews.build(review_params)
     @review.user = current_user
-    if @review.save
-      redirect_to product_url(@product), notice: 'Review created successfully!'
-    else
-      render 'products/show' # can you render a path?
+
+    respond_to do |format|
+      if @review.save
+        format.html {redirect_to product_url(@product), notice: 'Review created successfully!'}
+        format.js {}
+      else
+        format.html {render 'products/show'}
+        format.js {}# can you render a path?
+      end
     end
   end
 
