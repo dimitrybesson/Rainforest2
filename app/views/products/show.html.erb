@@ -15,4 +15,8 @@
   <p>Please <%= link_to 'Log in', new_sessions_path %> to add a review.</p>
 <% end %>
 
-<%= render 'reviews/reviews' %>
+<h3>Reviews</h3>
+
+<div id='reviews-list'>
+  <%= render @reviews %>
+</div>

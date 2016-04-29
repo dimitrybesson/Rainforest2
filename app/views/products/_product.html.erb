@@ -1,0 +1,7 @@
+<h2><%= link_to product.name, product_path(product) %> $<%= product.formatted_price %></h2>
+<p><%= product.description %></p>
+<p>
+  <% product.categories.each do |category| %>
+  <%= category.name %>
+  <% end %>
+</p>
