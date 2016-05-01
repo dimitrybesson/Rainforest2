@@ -4,5 +4,6 @@
 <% else %>
   $('#review-form-errors').html('');
   $('#reviews-list').append("<%= j (render(@review)) %>")
+  $('.review').last().css('border', '1px solid black')
   $('#new_review')[0].reset();
 <% end %>
